@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { ReactElement } from "react";
 import DataSection from "../components/DataSection";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import BasicLayout from "../components/Layout/Basic";
 import { NextPageWithLayout } from "../components/Layout/LayoutTypes";
@@ -15,6 +16,7 @@ const Home: NextPageWithLayout = () => {
       <TopWinners />
       <DataSection />
       <Staking />
+      <Footer />
     </>
   );
 };

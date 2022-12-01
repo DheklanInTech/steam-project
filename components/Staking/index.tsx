@@ -27,19 +27,25 @@ const Staking = () => {
             </h3>
             <div className="divider" />
 
-            <p>
-              <span>1</span> Open the &quot;Stake&quot; page
-            </p>
-            <p>
-              <span>2</span> Select the desired profit margin (e.g 2x,5x or 10x)
-            </p>
-            <p>
-              <span>3</span> Select your bet - Higher, Lower, The same or Rug
-              pull
-            </p>
-            <p>
-              <span>4</span> Place bet.
-            </p>
+            <div className="contents">
+              <span>1</span>
+              <p> Open the &quot;Stake&quot; page</p>
+            </div>
+
+            <div className="contents">
+              <span>2</span>
+              <p>Select the desired profit margin (e.g 2x,5x or 10x)</p>
+            </div>
+
+            <div className="contents">
+              <span>3</span>
+              <p>Select your bet - Higher, Lower, The same or Rug pull</p>
+            </div>
+
+            <div className="contents">
+              <span>4</span>
+              <p>Place bet.</p>
+            </div>
             <div className="divider" />
           </div>
         </div>

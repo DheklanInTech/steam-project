@@ -12,6 +12,28 @@ export const Container = styled.div<Props>`
   justify-content: center;
   padding-top: 0.5rem;
 
+  .learn {
+    position: absolute;
+    /* From https://css.glass */
+    background: rgba(13, 14, 19, 0.72);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
+    border: 1px solid rgba(13, 14, 19, 0.15);
+    padding: 2rem 2rem;
+    top: 70px;
+    left: -100px;
+
+    h6 {
+      font-size: 14px;
+    }
+    p {
+      font-size: 14px;
+      opacity: 60%;
+    }
+  }
+
   @media (max-width: 950px) {
     flex-direction: column;
     width: 100%;
@@ -27,7 +49,7 @@ export const Button = styled.button`
   border-radius: 30px;
   padding: 0.3rem 0;
   border: 1px solid #fff;
-  width: 110px;
+  width: 150px;
 
   &:hover {
     color: #fff;

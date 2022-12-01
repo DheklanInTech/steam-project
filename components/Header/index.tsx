@@ -1,8 +1,14 @@
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/router";
 import { HeaderStyles } from "./HeaderStyles";
 
 const Header = () => {
+  const router = useRouter();
+
+  const handleStake = () => {
+    router.push("/stake");
+  };
   return (
     <HeaderStyles>
       <div className="header">
@@ -11,7 +17,12 @@ const Header = () => {
             High Risks, High Profits. Not Built For <span>#Everyone.</span>
           </h1>
           <div className="buttons">
-            <button className="btn-green" type="button">
+            <button
+              onClick={handleStake}
+              onKeyDown={handleStake}
+              className="btn-green"
+              type="button"
+            >
               {" "}
               Get Started
             </button>

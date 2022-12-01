@@ -71,10 +71,10 @@ const TopWinners = () => {
           <div className="child" key={item.id}>
             <span>{item.id}</span>
             <div className="child-img">
-              <Image src={item.image} width={100} height={100} alt="imgs" />
+              <Image src={item.image} width={80} height={80} alt="imgs" />
             </div>
             <div className="child-content">
-              <h2>{item.amount}</h2>
+              <h4>{item.amount}</h4>
               <p>{item.wallet}</p>
             </div>
           </div>

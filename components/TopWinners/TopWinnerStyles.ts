@@ -43,13 +43,13 @@ export const TopWinnerStyles = styled.div`
       }
       .child-content {
         padding-top: 1rem;
-        h2 {
+        h4 {
           color: #fff;
         }
         p {
           color: #fff;
-          opacity: 95%;
-          font-size: 16px;
+          opacity: 60%;
+          font-size: 14px;
         }
       }
     }
