@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StakingStyles = styled.div`
   background: #0d0e13;
   color: #fff;
-  padding: 4rem 3rem;
+  padding: 8rem 3rem;
 
   .gd-text {
     background: var(--gradient-text);
@@ -36,14 +36,22 @@ export const StakingStyles = styled.div`
         }
       }
       .bottom-left {
+        .contents {
+          display: flex;
+        }
         p {
           padding-left: 0.5rem;
-
-          span {
-            color: #292929;
-            padding-right: 1rem;
-          }
         }
+
+        span {
+          color: #292929;
+          padding-right: 1rem;
+        }
+      }
+    }
+    & .staking-right {
+      h4 {
+        margin-top: 3rem;
       }
     }
   }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { BiMenuAltRight } from "react-icons/bi";
 import {
   Nav,
@@ -14,6 +15,12 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [learn, setLearn] = useState(false);
+  const [connectWallet, setConnectWallet] = useState(false);
+
+  const handleConnectWallet = () => {
+    setConnectWallet(!connectWallet);
+  };
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -22,6 +29,11 @@ const Navbar = () => {
     } else {
       setScrolled(false);
     }
+  };
+
+  const handleLearn = () => {
+    setLearn(!learn);
+    setIsOpen(!isOpen);
   };
 
   useEffect(() => {
@@ -46,19 +58,34 @@ const Navbar = () => {
         </Hamburger>
         <Container isOpen={isOpen}>
           <Menu>
-            <Link href={"/"}>
-              <MenuLinks onClick={() => setIsOpen(!isOpen)}>Learn</MenuLinks>
-            </Link>
+            <MenuLinks onClick={handleLearn}>
+              Learn{" "}
+              <span> {learn ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>{" "}
+            </MenuLinks>
+            {learn && (
+              <div className="learn">
+                <div>
+                  <h6>How to stake</h6>
+                  <p>Learn the abcs of staking on steam</p>
+                </div>
+                <div>
+                  <h6>Why steam</h6>
+                  <p>Why stake on steam? we will let you decide</p>
+                </div>
+              </div>
+            )}
 
-            <Link href={""}>
+            <Link href="https://polygon.technology/" target="_blank">
               <MenuLinks onClick={() => setIsOpen(!isOpen)}>
                 Buy Polygon
               </MenuLinks>
             </Link>
-            <Link href={""}>
+            <Link href="/stake">
               <MenuLinks onClick={() => setIsOpen(!isOpen)}>Stake</MenuLinks>
             </Link>
-            <Button>Wallet</Button>
+            <Button type="button" onClick={handleConnectWallet}>
+              {!connectWallet ? <span>Wallet</span> : <span>Disconnect</span>}{" "}
+            </Button>
           </Menu>
         </Container>
       </div>

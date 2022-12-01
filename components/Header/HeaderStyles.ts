@@ -38,7 +38,7 @@ export const HeaderStyles = styled.div`
         .btn-green {
           background: #13ff80;
           color: #000;
-          padding: 0.3rem 0;
+          padding: 0.6rem 0;
           width: 160px;
           border: none;
           border-radius: 30px;
@@ -47,7 +47,7 @@ export const HeaderStyles = styled.div`
         .btn-transparent {
           background: transparent;
           color: #fff;
-          padding: 0.3rem 0;
+          padding: 0.6rem 0;
           width: 130px;
           border: 1px solid #fff;
           border-radius: 30px;

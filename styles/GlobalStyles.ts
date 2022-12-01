@@ -59,4 +59,11 @@ a:link {
       padding: 0 2rem;
     }
   }
+
+  .lost{
+    color:#FF4F17;
+}
+ .win{
+    color:#13FF80;
+}
 `;

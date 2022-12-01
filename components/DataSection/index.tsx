@@ -35,7 +35,7 @@ const DataSection = () => {
           <div className="divider" />
           <div className="details">
             <p>Total amount won</p>
-            <h2>$19,345,234,566</h2>
+            <h2>$19,345,234</h2>
           </div>
         </div>
       </div>

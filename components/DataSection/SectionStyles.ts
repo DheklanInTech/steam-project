@@ -11,10 +11,10 @@ export const SectionStyle = styled.div`
 
   .circle {
     position: absolute;
-    top: 0px;
+    top: 0;
     bottom: 0;
     overflow: hidden;
-    left: 320px;
+    left: 390px;
   }
   .section {
     display: flex;
@@ -50,8 +50,12 @@ export const SectionStyle = styled.div`
   @media (max-width: 768px) {
     .circle {
       position: absolute;
-      top: 20px;
-      left: -100px;
+      top: -30px;
+      left: 90px;
+
+      img {
+        width: 200px;
+      }
     }
     .section {
       display: flex;
@@ -74,7 +78,7 @@ export const SectionStyle = styled.div`
           font-size: 14px;
         }
         h2 {
-          font-size: 14px;
+          font-size: 10px;
         }
       }
     }
