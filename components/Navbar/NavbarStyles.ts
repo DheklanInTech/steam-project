@@ -14,7 +14,6 @@ export const Container = styled.div<Props>`
 
   .learn {
     position: absolute;
-    /* From https://css.glass */
     background: rgba(13, 14, 19, 0.72);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -38,8 +37,15 @@ export const Container = styled.div<Props>`
     flex-direction: column;
     width: 100%;
 
-    height: ${({ isOpen }) => (isOpen ? "100h" : "0")};
+    height: ${({ isOpen }) => (isOpen ? "50vh" : "0")};
     transition: height 0.6s ease-in;
+
+    .learn {
+      padding: 2rem 2rem;
+      top: 100px;
+      left: -10px;
+      z-index: 1;
+    }
   }
 `;
 

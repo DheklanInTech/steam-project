@@ -53,10 +53,11 @@ a:link {
     flex-wrap: wrap;
     width: 100%;
     z-index: 99;
+
     transition: all 0.5s ease;
   
     @media (max-width: 650px) {
-      padding: 0 2rem;
+      padding: 1rem 2rem;
     }
   }
 
@@ -65,5 +66,36 @@ a:link {
 }
  .win{
     color:#13FF80;
+  }
+
+  
+.rotate-center {
+	-webkit-animation: rotate-center 10s linear infinite forwards;
+	        animation: rotate-center 10s linear infinite forwards;
 }
+
+  * animation rotate-center
+  * ----------------------------------------
+  */
+
+ @-webkit-keyframes rotate-center {
+   0% {
+     -webkit-transform: rotate(0);
+             transform: rotate(0);
+   }
+   100% {
+     -webkit-transform: rotate(360deg);
+             transform: rotate(360deg);
+   }
+ }
+ @keyframes rotate-center {
+   0% {
+     -webkit-transform: rotate(0);
+             transform: rotate(0);
+   }
+   100% {
+     -webkit-transform: rotate(360deg);
+             transform: rotate(360deg);
+   }
+ }
 `;

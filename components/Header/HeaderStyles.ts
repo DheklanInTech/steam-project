@@ -12,14 +12,23 @@ export const HeaderStyles = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    position: relative;
+
+    & .topeclips {
+      position: absolute;
+      top: -20px;
+      left: 250px;
+      right: 0;
+    }
 
     & .header-left {
-      flex: 1;
+      flex: 1.5;
       padding: 4rem 0;
-
+      margin-top: 3rem;
+      z-index: 1;
       h1 {
         color: #fff;
-        font-size: 5rem;
+        font-size: 6rem;
 
         span {
           background: var(--gradient-text);
@@ -65,17 +74,88 @@ export const HeaderStyles = styled.div`
     & .header-right {
       flex: 1;
       display: flex;
-      justify-content: center;
+      justify-content: end;
       padding: 5rem 0;
+      margin-top: 2rem;
+      border: none;
+
+      .img-container {
+        position: relative;
+        right: -40px;
+        overflow: hidden;
+      }
+
+      .first {
+        position: absolute;
+        bottom: 130px;
+        right: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        width: 70px;
+        height: 70px;
+        color: #fff;
+        background: rgb(115, 75, 179);
+        background: radial-gradient(
+          circle,
+          rgba(115, 75, 179, 1) 42%,
+          rgba(63, 44, 93, 1) 100%
+        );
+        box-shadow: rgba(104, 30, 225, 0.75) 0px 2px 20px 4px;
+      }
+
+      .second {
+        position: absolute;
+        top: 120px;
+        right: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+        color: #fff;
+        background: rgb(196, 126, 151);
+        background: radial-gradient(
+          circle,
+          rgba(196, 126, 151, 0.9612219887955182) 36%,
+          rgba(143, 81, 104, 0.9472163865546218) 100%
+        );
+        box-shadow: rgba(255, 94, 152, 0.75) 0px 2px 20px 4px;
+      }
+
+      .third {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        width: 100px;
+        height: 100px;
+        color: #fff;
+        background: rgb(48, 196, 116);
+        background: radial-gradient(
+          circle,
+          rgba(48, 196, 116, 1) 36%,
+          rgba(39, 77, 56, 1) 100%
+        );
+        box-shadow: rgba(19, 255, 128, 0.75) 0px 2px 20px 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+      }
     }
   }
 
   @media (max-width: 768px) {
     .header {
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
 
       & .header-left {
+        flex: 1;
+        padding: 1rem 0;
+
         h1 {
           color: #fff;
           font-size: 3rem;
@@ -85,14 +165,51 @@ export const HeaderStyles = styled.div`
         }
       }
       & .header-right {
-        padding: 1rem 0;
+        padding: 0 0;
         justify-content: start;
 
         .img-container {
+          position: relative;
+          right: 0;
+          overflow: visible;
+
           img {
             width: 250px;
             height: 250px;
           }
+        }
+
+        .first {
+          position: absolute;
+          bottom: 30px;
+          right: 100px;
+          width: 40px;
+          height: 40px;
+
+          h4 {
+            padding-top: 0.5rem;
+          }
+        }
+
+        .second {
+          position: absolute;
+          top: 80px;
+          right: 20px;
+          width: 30px;
+          height: 30px;
+
+          h6 {
+            padding-top: 0.5rem;
+          }
+        }
+
+        .third {
+          position: absolute;
+          top: -20px;
+          left: 30px;
+          width: 70px;
+          height: 70px;
+          color: #fff;
         }
       }
     }

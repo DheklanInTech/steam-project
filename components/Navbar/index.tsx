@@ -17,9 +17,16 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [learn, setLearn] = useState(false);
   const [connectWallet, setConnectWallet] = useState(false);
-
+  const [mobilenav, setMobilenav] = useState(false);
   const handleConnectWallet = () => {
     setConnectWallet(!connectWallet);
+  };
+
+  const handleMobileNav = () => {
+    setMobilenav(!mobilenav);
+    if (learn) {
+      setLearn(false);
+    }
   };
 
   const handleScroll = () => {
@@ -33,7 +40,6 @@ const Navbar = () => {
 
   const handleLearn = () => {
     setLearn(!learn);
-    setIsOpen(!isOpen);
   };
 
   useEffect(() => {
@@ -48,15 +54,18 @@ const Navbar = () => {
   return (
     <Nav className={x.join(" ")}>
       <div className="container-fluid ">
-        <Link href={"/"}>Logo</Link>
-        <Hamburger onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? (
-            <BiMenuAltRight size={24} color="#000000" />
+        <Link href={"/"}>
+          {" "}
+          <Image src="/logo.svg" height={50} width={100} alt="logo" />{" "}
+        </Link>
+        <Hamburger onClick={handleMobileNav}>
+          {mobilenav ? (
+            <BiMenuAltRight size={24} color="#fff" />
           ) : (
-            <BiMenuAltRight size={24} color="#000000" />
+            <BiMenuAltRight size={24} color="#fff" />
           )}
         </Hamburger>
-        <Container isOpen={isOpen}>
+        <Container isOpen={mobilenav}>
           <Menu>
             <MenuLinks onClick={handleLearn}>
               Learn{" "}

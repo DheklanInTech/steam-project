@@ -41,7 +41,7 @@ export const StakeStyles = styled.div`
         justify-content: space-between;
         align-items: center;
         // margin-top:1rem;
-        padding: 4rem 2rem;
+        padding: 3rem 2rem;
 
         .flex-1 {
           flex: 1;
@@ -54,6 +54,31 @@ export const StakeStyles = styled.div`
           border-left: 1px solid #fff;
           border-right: 1px solid #fff;
           flex-direction: column;
+
+          .custom-styles {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            h1 {
+              font-size: 4rem;
+            }
+          }
+
+          .inputs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            input {
+              background: transparent;
+              border: 1px solid #fff;
+              height: 80px;
+              width: 80px;
+            }
+          }
         }
         .flex-3 {
           flex: 1;
@@ -208,5 +233,9 @@ export const StakeStyles = styled.div`
         }
       }
     }
+  }
+
+  @media (max-width: 950px) {
+    display: none;
   }
 `;
