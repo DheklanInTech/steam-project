@@ -12,6 +12,15 @@ const Header = () => {
   return (
     <HeaderStyles>
       <div className="header">
+        <div className="topeclips">
+          <Image
+            src="/top.svg"
+            height={"200"}
+            width={"200"}
+            alt="header"
+            className="topeclips"
+          />
+        </div>
         <div className="header-left">
           <h1>
             High Risks, High Profits. Not Built For <span>#Everyone.</span>
@@ -39,13 +48,24 @@ const Header = () => {
 
         <div className="header-right">
           <div className="img-container">
-            <Image
-              src="/Group 1.png"
-              height={"400"}
-              width={"400"}
-              alt="header"
-              className="imgs"
-            />
+            <div className="first rotate-center">
+              <h4>5x</h4>
+            </div>
+            <div className="second rotate-center">
+              <h6>2x</h6>
+            </div>
+            <div className="third rotate-center">
+              <h3>10x</h3>
+            </div>
+            <div className="main-img ">
+              <Image
+                src="/Group 1.png"
+                height={"500"}
+                width={"480"}
+                alt="header"
+                className="imgs"
+              />
+            </div>
           </div>
         </div>
       </div>
