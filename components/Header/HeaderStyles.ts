@@ -152,6 +152,10 @@ export const HeaderStyles = styled.div`
       flex-direction: column;
       gap: 10px;
 
+      & .topeclips {
+        display: none;
+      }
+
       & .header-left {
         flex: 1;
         padding: 1rem 0;
