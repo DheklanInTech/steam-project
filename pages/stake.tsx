@@ -101,7 +101,7 @@ const Stake: NextPageWithLayout = () => {
                 </h2>
                 <div className="play-container">
                   <div className="left">
-                    <button className="btn-play       active" type="button">
+                    <button className="btn-play       " type="button">
                       Higher
                     </button>
                     <div className="same">
