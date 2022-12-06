@@ -4,11 +4,46 @@ import { NextPageWithLayout } from "../components/Layout/LayoutTypes";
 import { StakeStyles } from "../styles/Stake.styles";
 import ReactInputVerificationCode from "react-input-verification-code";
 import Mobile from "../components/stakemobile";
+import myabi from "../myabi.json";
+import { ethers } from "ethers";
+import type { MetaMaskInpageProvider } from "@metamask/providers";
+
+declare var window: any
+
+
 
 const Stake: NextPageWithLayout = () => {
+  const contractABI = myabi;
+  const contractAddress = "0xc1cb94CBFF4E2c15cEa5a061f8C84B0Bb1c23580";
+  
+  
+
+
   const [stake, setStake] = useState(true);
 
-  const handleStake = () => {
+  const handleStake = async () => {
+    try {
+      const { ethereum } = window;
+
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const stakeContract = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
+        let count = await stakeContract.userBalance();
+        console.log("Balance", count);
+        
+      } else {
+        console.log("Ethereum object doesn't exist!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+
     setStake(!stake);
   };
   return (
@@ -26,9 +61,9 @@ const Stake: NextPageWithLayout = () => {
           <div className="dashboard">
             <div className="margin">
               <p>Profit margin</p>
-              <p>200%</p>
-              <p>500%</p>
-              <p>1000%</p>
+              <p></p>
+              <p></p>
+              <p></p>
             </div>
             <div className="divider" />
             <div className="parent">
@@ -66,7 +101,7 @@ const Stake: NextPageWithLayout = () => {
                 </h2>
                 <div className="play-container">
                   <div className="left">
-                    <button className="btn-play       active" type="button">
+                    <button className="btn-play       " type="button">
                       Higher
                     </button>
                     <div className="same">
