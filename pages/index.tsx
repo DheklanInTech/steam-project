@@ -13,7 +13,8 @@ import TopWinners from "../components/TopWinners";
 export {};
 declare global {
   interface Window {
-    ethereum: any;  // this will be your variable name
+    ethereum: any;
+      
   }
 }
 
