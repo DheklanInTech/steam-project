@@ -4,6 +4,7 @@ import { NextPageWithLayout } from "../components/Layout/LayoutTypes";
 import { StakeStyles } from "../styles/Stake.styles";
 import ReactInputVerificationCode from "react-input-verification-code";
 import Mobile from "../components/stakemobile";
+<<<<<<< HEAD
 import myabi from "../myabi.json";
 import { ethers } from "ethers";
 import type { MetaMaskInpageProvider } from "@metamask/providers";
@@ -44,6 +45,13 @@ const Stake: NextPageWithLayout = () => {
     }
 
 
+=======
+
+const Stake: NextPageWithLayout = () => {
+  const [stake, setStake] = useState(true);
+
+  const handleStake = () => {
+>>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
     setStake(!stake);
   };
   return (
@@ -61,9 +69,15 @@ const Stake: NextPageWithLayout = () => {
           <div className="dashboard">
             <div className="margin">
               <p>Profit margin</p>
+<<<<<<< HEAD
               <p></p>
               <p></p>
               <p></p>
+=======
+              <p>200%</p>
+              <p>500%</p>
+              <p>1000%</p>
+>>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
             </div>
             <div className="divider" />
             <div className="parent">
@@ -101,7 +115,11 @@ const Stake: NextPageWithLayout = () => {
                 </h2>
                 <div className="play-container">
                   <div className="left">
+<<<<<<< HEAD
                     <button className="btn-play       " type="button">
+=======
+                    <button className="btn-play       active" type="button">
+>>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
                       Higher
                     </button>
                     <div className="same">

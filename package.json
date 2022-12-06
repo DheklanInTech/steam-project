@@ -14,10 +14,15 @@
     "@types/react-dom": "18.0.9",
     "@types/styled-components": "^5.1.26",
     "bootstrap": "^5.2.3",
+<<<<<<< HEAD
     "dotenv": "^16.0.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "ethers": "^5.7.2",
+=======
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.4",
+>>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
     "next": "13.0.4",
     "prettier": "^2.8.0",
     "react": "18.2.0",
@@ -26,7 +31,11 @@
     "react-icons": "^4.6.0",
     "react-input-verification-code": "^1.0.2",
     "styled-components": "^5.3.6",
+<<<<<<< HEAD
     "typescript": "4.9.3",
     "yarn": "^1.22.19"
+=======
+    "typescript": "4.9.3"
+>>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
   }
 }

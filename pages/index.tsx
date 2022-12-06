@@ -9,6 +9,7 @@ import { NextPageWithLayout } from "../components/Layout/LayoutTypes";
 import Staking from "../components/Staking";
 import TopWinners from "../components/TopWinners";
 
+<<<<<<< HEAD
 
 export {};
 declare global {
@@ -18,6 +19,8 @@ declare global {
   }
 }
 
+=======
+>>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
 const Home: NextPageWithLayout = () => {
   return (
     <>
