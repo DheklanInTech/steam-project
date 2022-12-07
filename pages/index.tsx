@@ -9,6 +9,15 @@ import { NextPageWithLayout } from "../components/Layout/LayoutTypes";
 import Staking from "../components/Staking";
 import TopWinners from "../components/TopWinners";
 
+
+export {};
+declare global {
+  interface Window {
+    ethereum: any;
+      
+  }
+}
+
 const Home: NextPageWithLayout = () => {
   return (
     <>
