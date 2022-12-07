@@ -3,10 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { BiMenuAltRight } from "react-icons/bi";
-<<<<<<< HEAD
 import { ethers } from "ethers";
-=======
->>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
 import {
   Nav,
   Hamburger,
@@ -20,12 +17,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [learn, setLearn] = useState(false);
-<<<<<<< HEAD
   // const [connectWallet, setConnectWallet] = useState(false);
   const [mobilenav, setMobilenav] = useState(false);
   const [defaultAccount, setDefaultAccount] = useState(null);
-  const [currentAccount, setCurrentAccount] = useState("");
-
+  const [currentAccount, setCurrentAccount] = useState("wallet");
+  const [currentAccountCol, setCurrentAccountCol] = useState<string>("Wallet");
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -70,6 +66,7 @@ const Navbar = () => {
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
+      setCurrentAccountCol(splitter(accounts[0]));
     } catch (error) {
       console.log(error);
     }
@@ -77,22 +74,25 @@ const Navbar = () => {
 
 
 
+
+
+const splitter = (value:string):string =>{
+   const col = value.slice(0,5);   
+  const col2 = value.slice(38,42);
+
+  return (col+"..."+col2);
+}
+
+
+
   useEffect(() => {
     checkIfWalletIsConnected();
-  }, []);
+  }, [currentAccountCol,currentAccount]);
 
   // const handleConnectWallet = () => {
   //   setConnectWallet(!connectWallet);
   // };
 
-=======
-  const [connectWallet, setConnectWallet] = useState(false);
-  const [mobilenav, setMobilenav] = useState(false);
-  const handleConnectWallet = () => {
-    setConnectWallet(!connectWallet);
-  };
-
->>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
   const handleMobileNav = () => {
     setMobilenav(!mobilenav);
     if (learn) {
@@ -163,13 +163,8 @@ const Navbar = () => {
             <Link href="/stake">
               <MenuLinks onClick={() => setIsOpen(!isOpen)}>Stake</MenuLinks>
             </Link>
-<<<<<<< HEAD
             <Button type="button" onClick={connectWallet}>
-              {!currentAccount ? <span>Wallet</span> : <span>Connected</span>}{" "}
-=======
-            <Button type="button" onClick={handleConnectWallet}>
-              {!connectWallet ? <span>Wallet</span> : <span>Disconnect</span>}{" "}
->>>>>>> 47b8333f80b8487d0a91a8966b8df6ca1b6748a8
+              {!currentAccount ? (<span>Wallet</span>) : (<span>{currentAccountCol}</span>)}{""}
             </Button>
           </Menu>
         </Container>
