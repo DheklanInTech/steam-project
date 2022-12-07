@@ -95,9 +95,9 @@ const Stake: NextPageWithLayout = () => {
           <div className="dashboard">
             <div className="margin">
               <p>Profit margin</p>
-              <p></p>
-              <p></p>
-              <p></p>
+              <p>200%</p>
+              <p>300%</p>
+              <p>500%</p>
             </div>
             <div className="divider" />
             <div className="parent">
