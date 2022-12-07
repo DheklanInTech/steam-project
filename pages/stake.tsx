@@ -5,8 +5,9 @@ import { StakeStyles } from "../styles/Stake.styles";
 import ReactInputVerificationCode from "react-input-verification-code";
 import Mobile from "../components/stakemobile";
 import myabi from "../myabi.json";
-import { ethers } from "ethers";
-import type { MetaMaskInpageProvider } from "@metamask/providers";
+import { BigNumber, ethers } from "ethers";
+// import { MetaMaskInpageProvider} from "@metamask/providers";
+
 
 declare var window: any
 
@@ -14,23 +15,73 @@ declare var window: any
 const Stake: NextPageWithLayout = () => {
   
   const contractABI = myabi;
-  const [balance, setUserBalance] = useState(null);
-  const [staking, setStaking] = useState("")
-  
-  const contractAddress = "0xc1cb94CBFF4E2c15cEa5a061f8C84B0Bb1c23580";
-  
-  
+  const [balance, setUserBalance] = useState<string>();
+  const [staking, setStaking] = useState("");
+  const [time, setTime] = useState("");
+  const [stakeType , setStakeType] = useState<string>();
+  const [userAddr, setUserAddr] = useState("");
+  const contractAddress = "0xb9C4D297b39Ad3662E7efcF99F101703C55EBD11";
+  const [contractProv, setContractProv] = useState<ethers.Contract>();
+  const [input , setInput] = useState("");
+  const [initialprice, setInitialPrice] = useState<any>();
+
 
   
   const [stake, setStake] = useState(true);
 
-  const handleStake = async () => {
-  
+  const getWinner = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+      const signer = provider.getSigner();
+      const stakeContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+    
+    const time = await stakeContract.winners(signer);
+    console.log(time);  
+  }
 
-    setStake(!stake);
-  };
+
+  const getTimer = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+      const signer = provider.getSigner();
+      const stakeContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+    
+    const time = await stakeContract.random();
+    console.log(time);  
+  }
+
+  const getInitialPrice = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+      const signer = provider.getSigner();
+      const stakeContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+    const price = await stakeContract.initialPrice();
+    // setInitialPrice(price);
+    
+    
+    
+  setInitialPrice(String(price));
+  console.log(String(price))
+  }
+
+
+
+
+
+
 
   useEffect(() =>{
+
+
     (async()=>{
       try {
         const { ethereum } = window;
@@ -38,6 +89,7 @@ const Stake: NextPageWithLayout = () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum as any);
         const signer = provider.getSigner();
         const bal = await signer.getAddress();
+        setUserAddr(bal);
         console.log("now okay")
         const balanc = await provider.getBalance(String(bal));
           console.log("this is the balance");
@@ -50,21 +102,31 @@ const Stake: NextPageWithLayout = () => {
           );
   
   
-        //   function sendTx() {
-        //     stakeContract.myTimer.myFunction().send();
-        //  };
+          setContractProv(stakeContract)
   
-  
-            
-  
+          let gameOn = await stakeContract.gameOn(signer);  
+          await gameOn.wait();
+            console.log(gameOn);
           
           let myTimer = await stakeContract.myTimer();
           console.log('Timer ', myTimer);
+
+          
+
+        //   const myTimer = async () =>{
+        //     await stakeContract.myTimer();
+        //     console.log('Timer ', myTimer);
+        //   }
+
+        //   const  Timer = setTimeout(() => {
+        //     myTimer();
+        //  }, 1000);
+
   
           let paywinner = await stakeContract.paywinner();
           console.log('paywinner ',paywinner);
   
-          let stake = await stakeContract.stake();
+    
   
           let getBalance = await stakeContract.getBalance();
           console.log('Contract Balance', getBalance);
@@ -78,7 +140,50 @@ const Stake: NextPageWithLayout = () => {
   
 
     })()
+    getInitialPrice();
   } ,[])
+
+
+
+  const handleStake = async (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+
+ 
+    const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+    const signer = provider.getSigner();
+    const bal = await signer.getAddress();
+      const stakeContract = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
+
+    //  const col = ethers.utils.parseEther("1");
+    //  console.log(Number(col))
+      try{
+          console.log(input)
+        let stake = await stakeContract.stake(bal,stakeType,{value: ethers.utils.parseUnits(input, "ether")});
+        
+
+      }catch(e){
+
+        console.log(e)
+      }
+
+
+      // console.log(staking);
+      // let amount = ethers.utils.parseEther(staking);
+      // const Stake = await contractAddress.stake(String())
+      // await Stake.wait()
+      // const balance = await provider.getBalance(contractAddress)
+      // console.log('balance', balance)
+      // const balanceFormatted = ethers.utils.formatEther(balance)
+      // setUserBalance(balanceFormatted);
+   
+
+    // setStake(!stake);
+  };
+
 
   return (
     <>
@@ -103,7 +208,7 @@ const Stake: NextPageWithLayout = () => {
             <div className="parent">
               <div className="flex-1">
                 <p>Current token price</p>
-                <h2>$3279</h2>
+                <h2>$<span>{initialprice}</span></h2>
               </div>
               <div className="flex-2">
                 <p>Price After 1 year</p>
@@ -135,22 +240,22 @@ const Stake: NextPageWithLayout = () => {
                 </h2>
                 <div className="play-container">
                   <div className="left">
-                    <button className="btn-play       " type="button">
+                    <button className="btn-play" type="button"  onClick={()=>setStakeType("higher")+window.alert("lower selected, set your amount and stake")}>
                       Higher
                     </button>
                     <div className="same">
-                      <button className="btn-play" type="button">
+                      <button className="btn-play" type="button" onClick={()=>window.alert("please choose higher or lower")}>
                         Same
                       </button>
                     </div>
-                    <button className="btn-play" type="button">
+                    <button className="btn-play" type="button" onClick={()=>setStakeType("lower")+window.alert("lower selected, set your amount and stake")}>
                       Lower
                     </button>
                   </div>
                   <div className="right">
                     <p>stake amount</p>
                     <div className="border-input">
-                      $<input type="number" />
+                      $<input type="number"  onChange={(e)=>setInput(e.target.value)} />
                     </div>
                   </div>
                 </div>
@@ -193,7 +298,7 @@ const Stake: NextPageWithLayout = () => {
             <button
               className="btn-play active"
               type="button"
-              onClick={handleStake}
+              onClick={(e)=>handleStake(e)}
             >
               Stake
             </button>
